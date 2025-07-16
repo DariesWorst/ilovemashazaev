@@ -27,7 +27,7 @@
           I<br>Love<br>
           Masha<br>From<br>Daries
         </div>
-        <!-- ✅ Heart now INSIDE the card -->
+        <!-- ✅ Heart inside the card -->
         <div class="heart"></div>
       </div>
     </div>
@@ -46,22 +46,29 @@
     
   </div>
 
-  <!-- ✅ JavaScript hover effect -->
+  <!-- ✅ JavaScript direct în HTML -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const container = document.querySelector(".container");
       const valentines = document.querySelector(".valentines");
       const card = document.querySelector(".card");
 
-      container.addEventListener("mouseenter", () => {
-        valentines.style.animationPlayState = "paused";
-        card.style.transition = "top 0.6s ease";
-        card.style.top = "-90px";
-      });
+      let isOpen = false; // verificăm dacă plicul e deschis sau nu
 
-      container.addEventListener("mouseleave", () => {
-        valentines.style.animationPlayState = "running";
-        card.style.top = "5px";
+      // Click sau tap oriunde pe plic
+      valentines.addEventListener("click", function() {
+        if (!isOpen) {
+          // Deschide plicul
+          valentines.style.animationPlayState = "paused"; 
+          card.style.transition = "top 0.6s ease";
+          card.style.top = "-90px";
+          isOpen = true;
+        } else {
+          // Închide plicul
+          valentines.style.animationPlayState = "running"; 
+          card.style.transition = "top 0.6s ease";
+          card.style.top = "5px";
+          isOpen = false;
+        }
       });
     });
   </script>
